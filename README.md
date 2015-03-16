@@ -1,6 +1,7 @@
 # BetterCallRedis
 
-TODO: Write a gem description
+Active Record Callback that pushes notification of creation or deletion to a Redis channel.
+Redis pushes a message (notification) to a channel with a configurable namespace when an active record entry is created or deleted.
 
 ## Installation
 
@@ -20,7 +21,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Initializer
+
+All those initialize options are optional.
+"Redis.new" will be used with default connection options if not specified.
+"bettercallredis:notification" is the default namespace.
+"deleted_attributes" for logically deleted active record models (ex: table column deleted or cancelled). Default is an empty array.
+
+```ruby
+BetterCallRedis::configure do |bcr|
+  bcr.redis              = Redis.new
+  bcr.namespace          = "bettercallredis:notification"
+  bcr.deleted_attributes = %w(deleted cancelled)
+end
+```
+
+Include the following in your active record model class to enable redis channel notification messages.
+
+```ruby
+include BetterCallRedis::ActiveRecord
+```
 
 ## Contributing
 
