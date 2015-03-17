@@ -23,7 +23,7 @@ module BetterCallRedis
     end
 
     def better_call_redis_notify(action)
-      self.class.better_call_redis_configuration.redis.publish(self.class.better_call_redis_configuration.namespace, {class_name: self.class.name, message: action}.to_json)
+      self.class.better_call_redis_configuration.redis.publish(self.class.better_call_redis_configuration.namespace, {:class_name => self.class.name, :message => action}.to_json)
     end
 
     module ClassMethods
