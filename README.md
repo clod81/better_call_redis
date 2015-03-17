@@ -1,5 +1,7 @@
 # BetterCallRedis
 
+[![Build Status](https://api.travis-ci.org/clod81/better_call_redis.svg)](http://travis-ci.org/clod81/better_call_redis)
+
 Active Record Callback that pushes notification of creation or deletion to a Redis channel.
 Redis pushes a message (notification) to a channel with a configurable namespace when an active record entry is created or deleted.
 
