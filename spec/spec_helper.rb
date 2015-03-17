@@ -1,7 +1,7 @@
 require 'better_call_redis'
+require 'redis'
 require 'active_record'
 require 'active_record/serialization'
-require 'fakeredis'
 
 class Person
   include ActiveRecord::Callbacks
