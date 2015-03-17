@@ -2,8 +2,7 @@
 
 [![Build Status](https://api.travis-ci.org/clod81/better_call_redis.svg)](http://travis-ci.org/clod81/better_call_redis)
 
-Active Record Callback that pushes notification of creation or deletion to a Redis channel.
-Redis pushes a message (notification) to a channel with a configurable namespace when an active record entry is created or deleted.
+Active Record Callback that pushes a notification on a Redis channel when an active record model is created or deleted.
 
 ## Installation
 
@@ -38,10 +37,26 @@ BetterCallRedis::configure do |bcr|
 end
 ```
 
+### Include in your active record model(s)
+
 Include the following in your active record model class to enable redis channel notification messages.
 
 ```ruby
 include BetterCallRedis::ActiveRecord
+```
+
+### Redis message
+
+Example for save a new record of class User << ActiveRecord::Base
+
+```ruby
+{:class_name => "User", :message => 1}.to_json
+```
+
+Example for deleting an existing record of class User << ActiveRecord::Base
+
+```ruby
+{:class_name => "User", :message => -1}.to_json
 ```
 
 ## Contributing
