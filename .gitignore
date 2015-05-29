@@ -13,3 +13,8 @@
 *.a
 *.gem
 mkmf.log
+
+# ignore personal files
+.rvmrc
+.ruby-version
+.ruby-gemset
